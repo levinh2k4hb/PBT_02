@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 30px; text-align: center; }
+        fieldset { border: 1px solid #ddd; border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+        legend { padding: 0 10px; font-weight: bold; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #555; font-weight: 500; }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="password"],
+        select,
+        textarea { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        input[type="password"]:focus,
+        select:focus,
+        textarea:focus { 
+            outline: none; 
+            border-color: #007bff; 
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+        textarea { resize: vertical; }
+        .radio-group { margin-bottom: 10px; }
+        .radio-group label { display: inline-block; margin-right: 20px; margin-bottom: 0; }
+        input[type="radio"] { margin-right: 5px; }
+        .checkbox-group { margin-bottom: 15px; }
+        .checkbox-group input[type="checkbox"] { margin-right: 8px; }
+        .checkbox-group label { display: inline; font-weight: normal; }
+        .button-group { display: flex; gap: 10px; margin-top: 25px; }
+        button { padding: 12px 30px; font-size: 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button[type="submit"] { background: #28a745; color: white; flex: 1; }
+        button[type="submit"]:hover { background: #218838; }
+        button[type="reset"] { background: #6c757d; color: white; flex: 1; }
+        button[type="reset"]:hover { background: #5a6268; }
+        .hint { font-size: 12px; color: #666; margin-top: 3px; }
+        .required::after { content: " *"; color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Đăng ký tài khoản</h1>
+        
+        <form action="#" method="POST" id="registerForm">
+            
+            <!-- Fieldset 1: Thông tin cá nhân -->
+            <fieldset>
+                <legend>Thông tin cá nhân</legend>
+                
+                <div class="form-group">
+                    <label for="fullname" class="required">Họ và tên</label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        required 
+                        minlength="2" 
+                        maxlength="50" 
+                        placeholder="Nguyễn Văn Minh"
+                        autocomplete="name">
+                    <div class="hint">Tối thiểu 2 ký tự, tối đa 50 ký tự</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="minh@email.com"
+                        autocomplete="email">
+                    <div class="hint">Định dạng email hợp lệ (chứa @)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        pattern="[0-9]{10}" 
+                        placeholder="0912345678"
+                        autocomplete="tel">
+                    <div class="hint">Đúng 10 chữ số (ví dụ: 0912345678)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Ngày sinh</label>
+                    <input 
+                        type="date" 
+                        id="dob" 
+                        name="dob"
+                        placeholder="Chọn ngày sinh">
+                    <div class="hint">Không thể chọn ngày tương lai</div>
+                </div>
+                
+            </fieldset>
+            
+            <!-- Fieldset 2: Tài khoản -->
+            <fieldset>
+                <legend>Tài khoản</legend>
+                
+                <div class="form-group">
+                    <label for="username" class="required">Tên đăng nhập</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        pattern="[a-zA-Z0-9_]{3,20}" 
+                        title="Chỉ chứa chữ cái, số, và gạch dưới. Độ dài 3-20 ký tự"
+                        placeholder="minh_2026"
+                        autocomplete="username">
+                    <div class="hint">3-20 ký tự (chữ cái, số, gạch dưới)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="required">Mật khẩu</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        minlength="8" 
+                        pattern="(?=.*\d)(?=.*[A-Z]).{8,}" 
+                        title="Tối thiểu 8 ký tự, phải chứa ít nhất 1 chữ hoa và 1 chữ số"
+                        placeholder="MyPass1234"
+                        autocomplete="new-password">
+                    <div class="hint">Tối thiểu 8 ký tự, có chữ hoa và số (ví dụ: MyPass123)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password" class="required">Xác nhận mật khẩu</label>
+                    <input 
+                        type="password" 
+                        id="confirm_password" 
+                        name="confirm_password" 
+                        required 
+                        minlength="8" 
+                        pattern="(?=.*\d)(?=.*[A-Z]).{8,}" 
+                        title="Phải khớp với mật khẩu trên"
+                        placeholder="MyPass1234"
+                        autocomplete="new-password">
+                    <div class="hint">Nhập lại mật khẩu (kiểm tra khớp bằng JavaScript)</div>
+                </div>
+                
+            </fieldset>
+            
+            <!-- Fieldset 3: Thông tin giao hàng -->
+            <fieldset>
+                <legend>Thông tin giao hàng</legend>
+                
+                <div class="form-group">
+                    <label for="gender" class="required">Giới tính</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="male" required> Nam
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female"> Nữ
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="other"> Khác
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city" class="required">Thành phố/Tỉnh</label>
+                    <select id="city" name="city" required>
+                        <option value="">-- Chọn thành phố --</option>
+                        <option value="hanoi">Hà Nội</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                        <option value="danang">Đà Nẵng</option>
+                        <option value="haiphong">Hải Phòng</option>
+                        <option value="cantho">Cần Thơ</option>
+                        <option value="vungtau">Vũng Tàu</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="district">Quận/Huyện</label>
+                    <select id="district" name="district">
+                        <option value="">-- Chọn quận/huyện --</option>
+                        <option value="q1">Quận 1</option>
+                        <option value="q2">Quận 2</option>
+                        <option value="q3">Quận 3</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Địa chỉ chi tiết</label>
+                    <textarea 
+                        id="address" 
+                        name="address" 
+                        rows="3" 
+                        placeholder="Số nhà, đường, phường/xã, quận/huyện...">
+                    </textarea>
+                </div>
+                
+            </fieldset>
+            
+            <!-- Checkbox đồng ý điều khoản -->
+            <div class="checkbox-group">
+                <input 
+                    type="checkbox" 
+                    id="agree_terms" 
+                    name="agree_terms" 
+                    required>
+                <label for="agree_terms">
+                    Tôi đồng ý với <a href="terms.html" target="_blank" rel="noopener">Điều khoản sử dụng</a> và <a href="privacy.html" target="_blank" rel="noopener">Chính sách bảo mật</a>
+                </label>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit">Đăng ký</button>
+                <button type="reset">Xóa</button>
+            </div>
+            
+        </form>
+    </div>
+    
+    <script>
+        // Validate date max = today
+        const dobInput = document.getElementById('dob');
+        const today = new Date().toISOString().split('T')[0];
+        dobInput.setAttribute('max', today);
+        
+        // Optional: Client-side confirm password validation
+        const form = document.getElementById('registerForm');
+        form.addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Mật khẩu không khớp. Vui lòng kiểm tra lại.');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -69,12 +69,13 @@
                     <label for="fullname" class="required">Họ và tên</label>
                     <input 
                         type="text" 
-                        id="fullname" 
-                        name="fullname" 
-                        required 
-                        minlength="2" 
-                        maxlength="50" 
-                        placeholder="Nguyễn Văn Minh"
+                        id="fullname"
+                        name="fullname"
+                        required
+                        minlength="2"
+                        maxlength="50"
+                        value="Phạm Thị Lê Vinh"
+                        placeholder="Nguyễn Văn Vinh"
                         autocomplete="name">
                     <div class="hint">Tối thiểu 2 ký tự, tối đa 50 ký tự</div>
                 </div>
@@ -83,10 +84,11 @@
                     <label for="email" class="required">Email</label>
                     <input 
                         type="email" 
-                        id="email" 
-                        name="email" 
-                        required 
-                        placeholder="minh@email.com"
+                        id="email"
+                        name="email"
+                        required
+                        value="phamvinh2004hb@gmail.com"
+                        placeholder="vinh@email.com"
                         autocomplete="email">
                     <div class="hint">Định dạng email hợp lệ (chứa @)</div>
                 </div>
@@ -95,9 +97,10 @@
                     <label for="phone">Số điện thoại</label>
                     <input 
                         type="tel" 
-                        id="phone" 
-                        name="phone" 
-                        pattern="[0-9]{10}" 
+                        id="phone"
+                        name="phone"
+                        pattern="[0-9]{10}"
+                        value="0356249734"
                         placeholder="0912345678"
                         autocomplete="tel">
                     <div class="hint">Đúng 10 chữ số (ví dụ: 0912345678)</div>
@@ -107,8 +110,9 @@
                     <label for="dob">Ngày sinh</label>
                     <input 
                         type="date" 
-                        id="dob" 
+                        id="dob"
                         name="dob"
+                        value="2004-01-01"
                         placeholder="Chọn ngày sinh">
                     <div class="hint">Không thể chọn ngày tương lai</div>
                 </div>
@@ -128,7 +132,7 @@
                         required 
                         pattern="[a-zA-Z0-9_]{3,20}" 
                         title="Chỉ chứa chữ cái, số, và gạch dưới. Độ dài 3-20 ký tự"
-                        placeholder="minh_2026"
+                        placeholder="vinh_2026"
                         autocomplete="username">
                     <div class="hint">3-20 ký tự (chữ cái, số, gạch dưới)</div>
                 </div>
@@ -176,7 +180,7 @@
                             <input type="radio" name="gender" value="male" required> Nam
                         </label>
                         <label>
-                            <input type="radio" name="gender" value="female"> Nữ
+                            <input type="radio" name="gender" value="female" checked> Nữ
                         </label>
                         <label>
                             <input type="radio" name="gender" value="other"> Khác
@@ -194,6 +198,7 @@
                         <option value="haiphong">Hải Phòng</option>
                         <option value="cantho">Cần Thơ</option>
                         <option value="vungtau">Vũng Tàu</option>
+                        <option value="hoabinh" selected>Hòa Bình</option>
                     </select>
                 </div>
                 

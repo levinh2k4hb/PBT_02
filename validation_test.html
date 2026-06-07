@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validation Test</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px}
+    form{max-width:600px}
+    .result{margin-top:20px;padding:10px;border:1px solid #ddd;background:#f9f9f9}
+    .ok{color:green}
+    .fail{color:red}
+  </style>
+</head>
+<body>
+  <h1>Validation Test</h1>
+  <form id="testForm">
+    <div>
+      <label>Case 1 (required): <input id="i1" name="i1" type="text" required value=""></label>
+    </div>
+    <div>
+      <label>Case 2 (email): <input id="i2" name="i2" type="email" value="abc"></label>
+    </div>
+    <div>
+      <label>Case 3 (number min/max): <input id="i3" name="i3" type="number" min="1" max="10" value="15"></label>
+    </div>
+    <div>
+      <label>Case 4 (pattern 10 digits): <input id="i4" name="i4" type="text" pattern="[0-9]{10}" value="abc123"></label>
+    </div>
+    <div>
+      <label>Case 5 (password minlength 8): <input id="i5" name="i5" type="password" minlength="8" value="123"></label>
+    </div>
+    <div style="margin-top:12px">
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+  </form>
+
+  <div id="results" class="result" aria-live="polite"></div>
+
+  <script>
+    const form = document.getElementById('testForm');
+    const results = document.getElementById('results');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const inputs = [
+        document.getElementById('i1'),
+        document.getElementById('i2'),
+        document.getElementById('i3'),
+        document.getElementById('i4'),
+        document.getElementById('i5')
+      ];
+      let html = '<h2>Validation results</h2><ul>';
+      inputs.forEach((inp, idx)=>{
+        const ok = inp.checkValidity();
+        const msg = inp.validationMessage || (ok? 'Valid':'' );
+        html += `<li>Case ${idx+1}: <span class="${ok? 'ok':'fail'}">${ok? 'OK':'FAIL'}</span> - ${msg}</li>`;
+      });
+      html += '</ul>';
+      results.innerHTML = html;
+    });
+  </script>
+</body>
+</html>
